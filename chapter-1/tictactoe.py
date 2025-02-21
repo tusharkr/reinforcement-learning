@@ -157,7 +157,6 @@ def play(rounds, axs, plt):
     count = 0
     while count < rounds:
         player = random.randint(2)
-        player = 1
         board = init_board()
         # Play a single game to the end
         fig.suptitle(f"Round {count+1}")
