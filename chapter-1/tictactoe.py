@@ -157,6 +157,7 @@ def play(rounds, axs, plt):
     count = 0
     while count < rounds:
         player = random.randint(2)
+        player = 1
         board = init_board()
         # Play a single game to the end
         fig.suptitle(f"Round {count+1}")
@@ -187,13 +188,14 @@ def play(rounds, axs, plt):
 
             winner = has_winner(board)
             if winner != -1:
-                # print(f"Game won by {player}!!!!")
+                print(f"Game won by {player}!!!!")
                 win_count[player] += 1
                 break
-            # board_disp(board, win_count, state_map, axs, plt)
+            board_disp(board, win_count, state_map, axs, plt)
             player = abs(player - 1)
         print(f"Round = {count}")
         count += 1
+        board_disp(board, win_count, state_map, axs, plt)
         time.sleep(1)
     pickle.dump(state_map, open("states.pl", "wb"))
     pickle.dump(win_count, open("winners.pl", "wb"))
@@ -207,4 +209,4 @@ if __name__ == "__main__":
     )
     alpha = 0.1
     _ = axs["A"].axis(False)
-    play(200000, axs, plt)
+    play(2000, axs, plt)
